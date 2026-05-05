@@ -1,0 +1,273 @@
+{
+  "meta": {
+    "site_name": "Adwokaci Zakopane",
+    "title": "Adwokaci Zakopane | Kancelaria Prawna",
+    "description": "Ekskluzywne doradztwo prawne dla biznesu. Ochrona kapitału, strategiczne fuzje i bezkompromisowa reprezentacja na najwyższym szczeblu.",
+    "lang": "pl",
+    "og_image": "https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/293b5e12-6968-4eb9-84f8-0d777f062dac_3840w.webp",
+    "url": "https://adwokaci.zakopane.pl"
+  },
+  "nav": {
+    "links": [
+      { "label": "Praktyka", "href": "#praktyka" },
+      { "label": "Filozofia", "href": "#filozofia" },
+      { "label": "Zespół", "href": "#zespol" },
+      { "label": "Kontakt", "href": "#kontakt" }
+    ]
+  },
+  "hero": {
+    "eyebrow": "Kancelaria Prawna",
+    "title_line_1": "Sztuka prawa",
+    "title_line_2": "Precyzja detalu",
+    "lead": "Ekskluzywne doradztwo prawne dla biznesu. Ochrona kapitału, strategiczne fuzje i bezkompromisowa reprezentacja na najwyższym szczeblu.",
+    "cta_label": "Rozpocznij dialog",
+    "cta_href": "#kontakt",
+    "image": {
+      "src": "https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/293b5e12-6968-4eb9-84f8-0d777f062dac_3840w.webp",
+      "alt": "Wnętrze kancelarii"
+    }
+  },
+  "marquee": [
+    "Prawo Korporacyjne",
+    "Fuzje i Przejęcia",
+    "Sukcesja Biznesu",
+    "Litigacja",
+    "Prawo Podatkowe"
+  ],
+  "services": {
+    "heading_line_1": "Obszary",
+    "heading_line_2": "Ekspertyzy",
+    "intro": "Specjalizujemy się w wąskich, wymagających najwyższych kompetencji dziedzinach prawa, zapewniając butikowe podejście do każdej sprawy.",
+    "items": [
+      {
+        "number": "01",
+        "title": "M&A i Prawo Spółek",
+        "description": "Złożone transakcje kapitałowe, restrukturyzacje, przekształcenia oraz bieżąca obsługa korporacyjna na najwyższym poziomie."
+      },
+      {
+        "number": "02",
+        "title": "Spory Gospodarcze",
+        "description": "Reprezentacja w wielomilionowych sporach przed sądami powszechnymi i arbitrażowymi. Strategie procesowe."
+      },
+      {
+        "number": "03",
+        "title": "Ochrona Kapitału",
+        "description": "Bezpieczeństwo majątku osobistego i firmowego. Fundacje rodzinne, trusty oraz optymalizacje strukturalne."
+      }
+    ]
+  },
+  "philosophy": {
+    "title_main": "Nie szukamy kompromisów. Tworzymy",
+    "title_accent": "bezpieczną przestrzeń",
+    "title_tail": "dla Twojego biznesu.",
+    "paragraphs": [
+      "Dla naszych klientów prawo to nie tylko zbiór przepisów, ale strategiczne narzędzie budowania przewagi. Wychodzimy poza schematy klasycznego doradztwa, angażując się w procesy decyzyjne i rozumiejąc biznesowe tło każdej operacji.",
+      "Dyskrecja, lojalność i bezwzględna precyzja to fundamenty, na których budujemy długotrwałe relacje z liderami branż."
+    ],
+    "image": {
+      "src": "https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/c950e636-642f-49b0-8d9f-c12d4b2f4253_1600w.jpg",
+      "alt": "Biblioteka prawnicza"
+    },
+    "signature": {
+      "name": "Piotr Zieliński",
+      "role": "Prezes",
+      "avatar": {
+        "src": "https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/150834d8-bf71-455d-a3c8-c2aea674e36e_320w.jpg",
+        "alt": "Piotr Zieliński"
+      }
+    }
+  },
+  "team": {
+    "heading": "Zespół Ekspertów",
+    "intro": "Wybitni specjaliści z wieloletnim stażem. Łączymy interdyscyplinarną wiedzę, gwarantując przewagę na każdym etapie współpracy.",
+    "members": [
+      {
+        "name": "Piotr Zieliński",
+        "role": "Adwokat Radca Prawny Zarządzający",
+        "bio": "Architekt skomplikowanych procesów restrukturyzacyjnych. Doradza zarządom spółek giełdowych w kluczowych decyzjach strategicznych.",
+        "image": {
+          "src": "https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/6cd8626c-8234-44f0-84cd-dc555d2f48c0_800w.jpg",
+          "alt": "Piotr Zieliński"
+        }
+      },
+      {
+        "name": "Anna Dąbrowska",
+        "role": "Starszy radca prawny, Prawo i Biznes",
+        "bio": "Prowadzi transakcje fuzji i przejęć o wartości przekraczającej setki milionów złotych. Ekspertka od negocjacji w warunkach kryzysowych.",
+        "image": {
+          "src": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop",
+          "alt": "Anna Dąbrowska"
+        }
+      },
+      {
+        "name": "Piotr Kowalski",
+        "role": "Starszy radca prawny, Prawo Podatkowe",
+        "bio": "Zarządza strategią podatkową największych grup kapitałowych w regionie. Lider praktyki optymalizacji i audytów.",
+        "image": {
+          "src": "https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/dfa99580-3735-46a7-9dcc-4729859590ed_800w.jpg",
+          "alt": "Piotr Kowalski"
+        }
+      }
+    ]
+  },
+  "track_record": {
+    "eyebrow": "Track Record",
+    "heading": "Wybrane Projekty",
+    "items": [
+      {
+        "year": "2023 / 24",
+        "sector": "Sektor Technologiczny",
+        "category": "Fuzje i Przejęcia",
+        "description": "Kompleksowe doradztwo prawne i podatkowe przy przejęciu lidera polskiej branży e-commerce przez zagraniczny fundusz Private Equity."
+      },
+      {
+        "year": "2023",
+        "sector": "Nieruchomości",
+        "category": "Spory Gospodarcze",
+        "description": "Skuteczna reprezentacja dewelopera komercyjnego w precedensowym wielomilionowym arbitrażu międzynarodowym związanym z kontraktem budowlanym."
+      },
+      {
+        "year": "2022",
+        "sector": "Energetyka",
+        "category": "Prawo Spółek",
+        "description": "Restrukturyzacja i optymalizacja podatkowa dużej grupy kapitałowej z sektora odnawialnych źródeł energii przed debiutem giełdowym."
+      }
+    ]
+  },
+  "insights": {
+    "heading": "Insights & Analizy",
+    "intro": "Autorskie komentarze, alerty prawne i pogłębione analizy aktualnych zmian legislacyjnych kształtujących biznes.",
+    "all_label": "Wszystkie Publikacje",
+    "all_href": "#",
+    "items": [
+      {
+        "category": "Prawo Podatkowe",
+        "date": "12 LIS 2023",
+        "title": "Fundacja Rodzinna jako nowoczesny wehikuł ochrony…",
+        "excerpt": "Szczegółowa analiza korzyści i ryzyk związanych z powoływaniem fundacji rodzinnych w polskim porządku prawnym.",
+        "href": "#"
+      },
+      {
+        "category": "M&A",
+        "date": "05 LIS 2023",
+        "title": "Due Diligence w transakcjach technologicznych. Kody źródłowe…",
+        "excerpt": "Praktyczne aspekty weryfikacji praw autorskich do oprogramowania przy przejęciach spółek z sektora IT.",
+        "href": "#"
+      },
+      {
+        "category": "Spory",
+        "date": "28 PAŹ 2023",
+        "title": "Zabezpieczenie roszczeń na udziałach przed arbitrażem.",
+        "excerpt": "Kluczowe strategie i najnowsze orzecznictwo dotyczące wniosków o udzielenie zabezpieczenia w sporach korporacyjnych.",
+        "href": "#"
+      }
+    ]
+  },
+  "contact": {
+    "heading": "Prywatna Konsultacja",
+    "intro": "Wypełnij formularz, aby ustalić termin poufnego spotkania w naszej siedzibie lub w formie szyfrowanej wideokonferencji.",
+    "topics": [
+      { "value": "ma", "label": "M&A i Prawo Spółek" },
+      { "value": "litigacja", "label": "Spory Gospodarcze" },
+      { "value": "ochrona", "label": "Ochrona Kapitału" },
+      { "value": "inne", "label": "Inne zapytanie" }
+    ],
+    "consent": "Potwierdzam świadomość, że przesłanie zapytania nie kreuje stosunku klient-adwokat. Wyrażam zgodę na poufne przetwarzanie moich danych w celu nawiązania kontaktu.",
+    "submit_label": "Prześlij Wiadomość",
+    "endpoint": "/api/contact"
+  },
+  "footer": {
+    "brand": "Adwokaci Zakopane",
+    "copyright": "© 2024 Adwokaci Zakopane. Wszelkie prawa zastrzeżone",
+    "social": [
+      { "label": "LinkedIn", "href": "#" },
+      { "label": "Dojazd", "href": "#" }
+    ],
+    "legal_links": [
+      { "label": "Polityka Prywatności", "href": "/polityka-prywatnosci.html" },
+      { "label": "Nota Prawna", "href": "/nota-prawna.html" }
+    ]
+  },
+  "legal_pages": {
+    "privacy": {
+      "slug": "polityka-prywatnosci",
+      "title": "Polityka Prywatności",
+      "placeholder_notice": "PLACEHOLDER — DO WERYFIKACJI PRAWNEJ",
+      "intro": "Niniejsza polityka określa zasady przetwarzania danych osobowych osób korzystających ze strony adwokaci.zakopane.pl oraz kontaktujących się z kancelarią. Treść stanowi szablon wymagający weryfikacji prawnej przed publikacją.",
+      "sections": [
+        {
+          "heading": "1. Administrator danych",
+          "body": "Administratorem danych osobowych jest kancelaria prowadząca działalność pod marką „Adwokaci Zakopane” z siedzibą w Zakopanem. Pełne dane rejestrowe administratora (firma, adres, NIP, REGON, numer wpisu na listę adwokatów / radców prawnych) zostaną uzupełnione po weryfikacji prawnej."
+        },
+        {
+          "heading": "2. Inspektor Ochrony Danych",
+          "body": "W sprawach związanych z przetwarzaniem danych osobowych można kontaktować się z administratorem pod adresem e-mail wskazanym w sekcji „Kontakt”. Zgodnie z art. 37 RODO powołanie Inspektora Ochrony Danych nie jest obligatoryjne dla każdej kancelarii — ostateczna decyzja zostanie potwierdzona w ramach weryfikacji prawnej."
+        },
+        {
+          "heading": "3. Cele i podstawy prawne przetwarzania",
+          "body": "Dane osobowe przetwarzane są w celu: (a) udzielenia odpowiedzi na zapytanie wysłane przez formularz kontaktowy — na podstawie art. 6 ust. 1 lit. b RODO (czynności przed zawarciem umowy) oraz art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes administratora w postaci obsługi korespondencji); (b) realizacji zawartych umów o świadczenie pomocy prawnej — art. 6 ust. 1 lit. b RODO; (c) wypełnienia obowiązków prawnych ciążących na administratorze, w tym wynikających z ustawy Prawo o adwokaturze i ustawy o radcach prawnych — art. 6 ust. 1 lit. c RODO."
+        },
+        {
+          "heading": "4. Okres przechowywania danych",
+          "body": "Dane przetwarzane są przez okres niezbędny do realizacji celu, a następnie przez okres wymagany przepisami prawa, w szczególności przepisami o tajemnicy adwokackiej / radcowskiej, przepisami podatkowymi oraz przepisami o przedawnieniu roszczeń. Szczegółowe okresy retencji zostaną doprecyzowane po weryfikacji prawnej."
+        },
+        {
+          "heading": "5. Prawa osoby, której dane dotyczą",
+          "body": "Każdej osobie przysługuje prawo dostępu do treści swoich danych (art. 15 RODO), ich sprostowania (art. 16), usunięcia (art. 17), ograniczenia przetwarzania (art. 18), przenoszenia danych (art. 20), wniesienia sprzeciwu (art. 21) oraz cofnięcia zgody w dowolnym momencie bez wpływu na zgodność z prawem przetwarzania dokonanego przed jej cofnięciem. Osobie przysługuje prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych."
+        },
+        {
+          "heading": "6. Odbiorcy danych",
+          "body": "Odbiorcami danych mogą być: podmioty świadczące usługi hostingowe (Cloudflare), usługi pocztowe (Resend), dostawcy infrastruktury IT oraz organy publiczne uprawnione do uzyskania danych na podstawie przepisów prawa. Dane nie są przekazywane poza Europejski Obszar Gospodarczy bez zastosowania odpowiednich zabezpieczeń."
+        },
+        {
+          "heading": "7. Pliki cookies",
+          "body": "Strona wykorzystuje wyłącznie pliki cookies niezbędne do prawidłowego funkcjonowania serwisu. Strona nie korzysta z narzędzi analitycznych ani marketingowych typu Google Analytics, Facebook Pixel itp. Szczegóły techniczne zostaną doprecyzowane po wdrożeniu finalnej wersji strony."
+        },
+        {
+          "heading": "8. Postanowienia końcowe",
+          "body": "Polityka może być aktualizowana w celu odzwierciedlenia zmian w przepisach prawa lub praktyce kancelarii. Aktualna wersja polityki dostępna jest pod adresem /polityka-prywatnosci."
+        }
+      ]
+    },
+    "disclaimer": {
+      "slug": "nota-prawna",
+      "title": "Nota Prawna",
+      "placeholder_notice": "PLACEHOLDER — DO WERYFIKACJI PRAWNEJ",
+      "intro": "Niniejsza nota prawna określa zasady korzystania ze strony adwokaci.zakopane.pl oraz zakres odpowiedzialności kancelarii za publikowane treści. Treść stanowi szablon wymagający weryfikacji prawnej przed publikacją.",
+      "sections": [
+        {
+          "heading": "1. Charakter informacyjny",
+          "body": "Treści zamieszczone na stronie mają charakter wyłącznie informacyjny i nie stanowią porady prawnej, opinii prawnej ani oferty w rozumieniu przepisów Kodeksu cywilnego. Zapoznanie się z treścią strony nie kreuje stosunku klient-adwokat ani klient-radca prawny."
+        },
+        {
+          "heading": "2. Tajemnica zawodowa",
+          "body": "Adwokatów i radców prawnych kancelarii obowiązuje tajemnica zawodowa wynikająca z art. 6 ustawy Prawo o adwokaturze oraz art. 3 ustawy o radcach prawnych. Przesłanie zapytania przez formularz kontaktowy nie powoduje automatycznego objęcia korespondencji tajemnicą zawodową — pełna ochrona przysługuje dopiero po nawiązaniu stosunku zlecenia."
+        },
+        {
+          "heading": "3. Prawa autorskie",
+          "body": "Wszelkie materiały publikowane na stronie (teksty, grafika, zdjęcia, układ graficzny) podlegają ochronie wynikającej z ustawy z dnia 4 lutego 1994 r. o prawie autorskim i prawach pokrewnych. Kopiowanie, rozpowszechnianie i wykorzystywanie materiałów bez uprzedniej zgody kancelarii jest zabronione, z wyłączeniem dozwolonego użytku osobistego."
+        },
+        {
+          "heading": "4. Ograniczenie odpowiedzialności",
+          "body": "Kancelaria dokłada starań, aby informacje publikowane na stronie były aktualne i rzetelne, jednak nie ponosi odpowiedzialności za skutki decyzji podjętych wyłącznie na podstawie treści zamieszczonych w serwisie, w szczególności za interpretację stanu prawnego w konkretnych sprawach. Każda sprawa wymaga indywidualnej analizy."
+        },
+        {
+          "heading": "5. Linki zewnętrzne",
+          "body": "Strona może zawierać odesłania do witryn podmiotów trzecich. Kancelaria nie odpowiada za treść tych witryn ani za politykę prywatności stosowaną przez ich administratorów."
+        },
+        {
+          "heading": "6. Reklama usług prawnych",
+          "body": "Treści publikowane na stronie zostały przygotowane z poszanowaniem zasad etyki zawodowej, w szczególności zasad informowania o wykonywaniu zawodu adwokata (Zbiór Zasad Etyki Adwokackiej) oraz zasad informowania o wykonywaniu zawodu radcy prawnego (Kodeks Etyki Radcy Prawnego). Treści nie stanowią reklamy w rozumieniu przepisów ograniczających reklamę usług prawnych."
+        },
+        {
+          "heading": "7. Zakres zastosowania",
+          "body": "Notę prawną stosuje się do wszystkich osób korzystających ze strony adwokaci.zakopane.pl. Korzystanie ze strony oznacza akceptację jej postanowień. Spory wynikające z korzystania ze strony rozstrzyga sąd właściwy dla siedziby kancelarii."
+        },
+        {
+          "heading": "8. Kontakt",
+          "body": "Pytania dotyczące niniejszej noty prosimy kierować na adres e-mail wskazany w sekcji „Kontakt”."
+        }
+      ]
+    }
+  }
+}
