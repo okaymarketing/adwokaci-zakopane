@@ -222,13 +222,21 @@ const renderContact = (contact) => `
         </div>
       </div>
       <div class="field field--select">
-        <label class="sr-only" for="contact-topic">Temat rozmowy</label>
-        <select class="field__select" id="contact-topic" name="topic" required>
+        <label class="sr-only" for="contact-subject">Temat rozmowy</label>
+        <select class="field__select" id="contact-subject" name="subject" required>
           <option value="" disabled selected>Temat Rozmowy</option>
           ${contact.topics.map((topic) => `
             <option value="${escapeAttr(topic.value)}">${escapeHtml(topic.label)}</option>
           `).join('')}
         </select>
+      </div>
+      <div class="field field--textarea">
+        <label class="field__label" for="contact-message">${escapeHtml(contact.message_label)}</label>
+        <textarea class="field__textarea" id="contact-message" name="message" required minlength="10" maxlength="5000" rows="5" placeholder="${escapeAttr(contact.message_placeholder)}"></textarea>
+      </div>
+      <div class="field field--honeypot" aria-hidden="true">
+        <label for="contact-website">Strona www (zostaw puste)</label>
+        <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" value="">
       </div>
       <label class="consent">
         <input class="consent__input" type="checkbox" name="consent" required>
