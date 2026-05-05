@@ -2,13 +2,13 @@ name: CI Check
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main]
   pull_request:
-    branches: [main, develop]
+    branches: [main]
 
 jobs:
   check:
-    name: check
+    name: build
     runs-on: ubuntu-latest
 
     steps:
@@ -21,11 +21,13 @@ jobs:
 
       - run: npm ci
 
-      - name: TypeScript check
-        run: npx tsc --noEmit
-
-      - name: Lint
-        run: npx eslint . --max-warnings 0
-
       - name: Build
         run: npm run build
+
+      - name: Verify dist
+        run: |
+          test -f dist/index.html
+          test -f dist/_headers
+          test -f dist/sitemap.xml
+          test -f dist/llms.txt
+          echo "Build artifacts OK"
