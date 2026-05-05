@@ -1,23 +1,10 @@
-interface Env {
-  RESEND_API_KEY: string;
-}
-
-type Subject = 'ma' | 'litigacja' | 'ochrona' | 'inne';
-
-interface ContactPayload {
-  name: string;
-  email: string;
-  subject: Subject;
-  message: string;
-}
-
-const ALLOWED_ORIGINS = new Set<string>([
+const ALLOWED_ORIGINS = new Set([
   'https://adwokaci.zakopane.pl',
   'https://adwokaci-zakopane.pages.dev',
   'http://localhost:3000',
 ]);
 
-const SUBJECT_LABELS: Record<Subject, string> = {
+const SUBJECT_LABELS = {
   ma: 'M&A i Prawo Spółek',
   litigacja: 'Spory Gospodarcze',
   ochrona: 'Ochrona Kapitału',
@@ -28,9 +15,9 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const MAX_REQ_PER_MIN = 5;
 const WINDOW_MS = 60_000;
 
-const ipBuckets = new Map<string, number[]>();
+const ipBuckets = new Map();
 
-const checkRateLimit = (ip: string): boolean => {
+const checkRateLimit = (ip) => {
   const now = Date.now();
   const bucket = ipBuckets.get(ip) ?? [];
   const fresh = bucket.filter((t) => now - t < WINDOW_MS);
@@ -43,7 +30,7 @@ const checkRateLimit = (ip: string): boolean => {
   return true;
 };
 
-const corsHeaders = (origin: string | null): Record<string, string> => {
+const corsHeaders = (origin) => {
   const allowOrigin = origin !== null && ALLOWED_ORIGINS.has(origin) ? origin : '';
   return {
     'Access-Control-Allow-Origin': allowOrigin,
@@ -54,7 +41,7 @@ const corsHeaders = (origin: string | null): Record<string, string> => {
   };
 };
 
-const jsonResponse = (status: number, body: Record<string, unknown>, origin: string | null): Response =>
+const jsonResponse = (status, body, origin) =>
   new Response(JSON.stringify(body), {
     status,
     headers: {
@@ -63,7 +50,7 @@ const jsonResponse = (status: number, body: Record<string, unknown>, origin: str
     },
   });
 
-const escapeHtml = (value: string): string =>
+const escapeHtml = (value) =>
   value
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -71,14 +58,10 @@ const escapeHtml = (value: string): string =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 
-const isSubject = (value: unknown): value is Subject =>
+const isSubject = (value) =>
   typeof value === 'string' && Object.prototype.hasOwnProperty.call(SUBJECT_LABELS, value);
 
-type ValidationResult =
-  | { ok: true; value: ContactPayload }
-  | { ok: false; error: string };
-
-const validate = (data: Record<string, unknown>): ValidationResult => {
+const validate = (data) => {
   const name = typeof data.name === 'string' ? data.name.trim() : '';
   if (name.length < 2 || name.length > 100) {
     return { ok: false, error: 'Nieprawidłowe imię i nazwisko (2-100 znaków).' };
@@ -109,7 +92,7 @@ const validate = (data: Record<string, unknown>): ValidationResult => {
   };
 };
 
-const renderEmailHtml = (p: ContactPayload): string => `<!doctype html>
+const renderEmailHtml = (p) => `<!doctype html>
 <html lang="pl">
 <head><meta charset="UTF-8"><title>Nowe zapytanie</title></head>
 <body style="font-family: Georgia, 'Times New Roman', serif; color: #1a1a1a; max-width: 640px; margin: 0 auto; padding: 24px;">
@@ -126,7 +109,7 @@ const renderEmailHtml = (p: ContactPayload): string => `<!doctype html>
 </body>
 </html>`;
 
-const sendEmail = async (env: Env, p: ContactPayload): Promise<boolean> => {
+const sendEmail = async (env, p) => {
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
@@ -144,12 +127,12 @@ const sendEmail = async (env: Env, p: ContactPayload): Promise<boolean> => {
   return response.ok;
 };
 
-export const onRequestOptions: PagesFunction<Env> = ({ request }) => {
+export const onRequestOptions = ({ request }) => {
   const origin = request.headers.get('Origin');
   return new Response(null, { status: 204, headers: corsHeaders(origin) });
 };
 
-export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
+export const onRequestPost = async ({ request, env }) => {
   const origin = request.headers.get('Origin');
 
   if (origin === null || !ALLOWED_ORIGINS.has(origin)) {
@@ -161,7 +144,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     return jsonResponse(429, { success: false, error: 'Zbyt wiele żądań. Spróbuj ponownie za chwilę.' }, origin);
   }
 
-  let raw: unknown;
+  let raw;
   try {
     raw = await request.json();
   } catch {
@@ -172,7 +155,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     return jsonResponse(400, { success: false, error: 'Nieprawidłowy format żądania.' }, origin);
   }
 
-  const data = raw as Record<string, unknown>;
+  const data = raw;
 
   // Honeypot — bot wypełnił ukryte pole 'website'. Zwracamy 200 OK BEZ wysyłki.
   if (typeof data.website === 'string' && data.website.length > 0) {
