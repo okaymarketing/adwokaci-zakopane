@@ -1,29 +1,45 @@
-# okay.marketing — Project Template
+# Adwokaci Zakopane
 
-Template repozytorium dla projektów klientów okay.marketing.
-
-## Co zawiera
-
-- `.github/workflows/codeql.yml` — CodeQL security scan (SAST)
-- `.github/workflows/check.yml` — CI: tsc + eslint + build
-- `.github/dependabot.yml` — automatyczne update'y zależności
-- `docs/SPEC.md` — szablon PAF SPEC.md (6 filarów)
-- `docs/SETUP.md` — instrukcja konfiguracji GitHub Settings
-- `.eslintrc.json` — ESLint config
-- `tsconfig.json` — TypeScript strict
-- `.gitignore` — Next.js standard
-
-## Użycie
-
-1. GitHub → New repository → Template: `okaymarketing/project-template`
-2. Postępuj wg `docs/SETUP.md` (branch protection, Dependabot alerts)
-3. Wypełnij `docs/SPEC.md` z Opus w Claude.ai (Warstwa 3 PAF)
-4. Brain + Code Agent przejmują realizację faz
+Strona kancelarii prawnej [adwokaci.zakopane.pl](https://adwokaci.zakopane.pl)
 
 ## Stack
 
-- Next.js 16 + React 19
-- Tailwind CSS 4
-- TypeScript 5 (strict)
-- Supabase (jeśli wymaga backendu)
-- Vercel / Netlify (hosting)
+- Statyczny HTML/CSS + vanilla JS (zero frameworków)
+- Treść: `src/content/site.json`
+- Generator: `src/build.js` (Node)
+- Hosting: Cloudflare Pages
+- Formularz kontaktowy: CF Worker + Resend
+- Admin CMS: CF Worker + GitHub API
+- Obrazy: Cloudflare R2
+- Auth: CF Access
+
+## Development
+
+```bash
+npm install
+npm run build        # Generuje dist/
+npx serve dist/      # Preview http://localhost:3000
+```
+
+## Dokumentacja
+
+- [CLAUDE.md](./CLAUDE.md) — zasady projektu dla AI agentów
+- [AGENTS.md](./AGENTS.md) — instrukcja dla Code Agent
+- [docs/SPEC.md](./docs/SPEC.md) — specyfikacja techniczna (6 filarów PAF)
+- [docs/SETUP.md](./docs/SETUP.md) — konfiguracja repo
+
+## Fazy projektu
+
+| # | Faza | Model | Status |
+|---|------|-------|--------|
+| 1 | Schema site.json + HTML/CSS | Flash | pending |
+| 2 | CF Pages deploy + domain | Flash | pending |
+| 3 | Formularz kontaktowy (Resend) | Flash | pending |
+| 4 | Admin panel /admin | Sonnet | pending |
+| 5 | R2 image storage | Flash | pending |
+| 6 | SEO/GEO + PAF L1 | Flash | pending |
+| 7 | QA + launch | Flash | pending |
+
+## TC Integration
+
+Projekt zarządzany przez [TailorCode](https://github.com/okaymarketing/tailor-code). PRD, fazy i SPEC w Supabase.
