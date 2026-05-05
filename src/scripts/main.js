@@ -82,6 +82,7 @@
       if (!form.reportValidity()) return;
 
       const data = Object.fromEntries(new FormData(form).entries());
+      data.consent = data.consent === 'on';
       setStatus('Wysyłanie…');
       if (submit) submit.disabled = true;
 
