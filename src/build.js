@@ -322,6 +322,8 @@ const copyAssets = () => {
   const assets = [
     { from: path.join(SRC, 'styles', 'main.css'), to: path.join(DIST, 'styles', 'main.css') },
     { from: path.join(SRC, 'scripts', 'main.js'), to: path.join(DIST, 'scripts', 'main.js') },
+    { from: path.join(SRC, 'static', '_headers'), to: path.join(DIST, '_headers') },
+    { from: path.join(SRC, 'static', '_redirects'), to: path.join(DIST, '_redirects') },
   ];
   for (const asset of assets) {
     ensureDir(path.dirname(asset.to));
