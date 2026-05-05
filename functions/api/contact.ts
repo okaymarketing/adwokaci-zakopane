@@ -134,7 +134,7 @@ const sendEmail = async (env: Env, p: ContactPayload): Promise<boolean> => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: 'Formularz Adwokaci Zakopane <noreply@adwokaci.zakopane.pl>',
+      from: 'Formularz Adwokaci Zakopane <noreply@okay.marketing>',
       to: ['piotr.zielinski@adwokatura.home.pl'],
       reply_to: p.email,
       subject: `[Kontakt] ${SUBJECT_LABELS[p.subject]} — ${p.name}`,
