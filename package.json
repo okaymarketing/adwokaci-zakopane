@@ -4,9 +4,11 @@
   "private": true,
   "description": "Strona kancelarii prawnej adwokaci.zakopane.pl",
   "scripts": {
-    "build": "echo 'No build yet — phase 1 will create build.js'",
-    "dev": "echo 'No dev server yet'",
+    "build": "node src/build.js",
+    "dev": "npx serve dist/ -p 3000",
     "lint": "echo 'No lint config yet'"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
 }
