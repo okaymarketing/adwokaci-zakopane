@@ -21,19 +21,21 @@ const loadSite = () => {
   return JSON.parse(fs.readFileSync(file, 'utf8'));
 };
 
-const renderHead = (site, { pageTitle, description }) => `
+const renderHead = (site, { pageTitle, description, pageUrl, extras = '' }) => `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${escapeHtml(pageTitle)}</title>
     <meta name="description" content="${escapeAttr(description)}">
+    <link rel="canonical" href="${escapeAttr(pageUrl)}">
+    <link rel="llms" href="/llms.txt">
     <meta property="og:title" content="${escapeAttr(pageTitle)}">
     <meta property="og:description" content="${escapeAttr(description)}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="${escapeAttr(site.meta.url)}">
+    <meta property="og:url" content="${escapeAttr(pageUrl)}">
     <meta property="og:image" content="${escapeAttr(site.meta.og_image)}">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="/styles/main.css">
-`;
+${extras}`;
 
 const renderNav = (site) => `
 <nav class="nav" data-nav aria-label="Główna nawigacja">
@@ -268,9 +270,80 @@ const renderFooter = (footer) => `
 </footer>
 `;
 
-const renderHomePage = (site) => `<!doctype html>
+const escapeJsonLd = (json) => json.replace(/<\/(script)/gi, '<\\/$1');
+
+const renderJsonLd = (data) => `    <script type="application/ld+json">
+${escapeJsonLd(JSON.stringify(data, null, 2))}
+    </script>`;
+
+const buildHomeStructuredData = (site) => {
+  const baseUrl = site.meta.url;
+  const specializations = site.services.items.map((item) => item.title);
+  const legalService = {
+    '@context': 'https://schema.org',
+    '@type': 'LegalService',
+    'name': site.meta.site_name,
+    'url': baseUrl,
+    'description': site.meta.description,
+    'image': site.meta.og_image,
+    'areaServed': { '@type': 'Place', 'name': 'Polska' },
+    'address': {
+      '@type': 'PostalAddress',
+      'addressLocality': 'Zakopane',
+      'addressCountry': 'PL',
+    },
+    'knowsAbout': specializations,
+    'employee': site.team.members.map((member) => ({
+      '@type': 'Attorney',
+      'name': member.name,
+      'jobTitle': member.role,
+      'description': member.bio,
+      'image': member.image.src,
+    })),
+  };
+  const attorneys = site.team.members.map((member) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Attorney',
+    'name': member.name,
+    'jobTitle': member.role,
+    'description': member.bio,
+    'image': member.image.src,
+    'worksFor': { '@type': 'LegalService', 'name': site.meta.site_name, 'url': baseUrl },
+  }));
+  const website = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    'name': site.meta.site_name,
+    'url': baseUrl,
+    'inLanguage': site.meta.lang,
+    'description': site.meta.description,
+  };
+  return [legalService, ...attorneys, website];
+};
+
+const buildLlmContext = (site) => {
+  const services = site.services.items.map((item) => `${item.title}: ${item.description}`).join(' | ');
+  const team = site.team.members.map((member) => `${member.name} (${member.role})`).join(', ');
+  return [
+    `${site.meta.site_name} — kancelaria prawna z siedzibą w Zakopanem.`,
+    site.meta.description,
+    `Specjalizacje: ${services}.`,
+    `Zespół: ${team}.`,
+    'Kontakt: formularz kontaktowy na stronie, e-mail piotr.zielinski@adwokatura.home.pl.',
+  ].join(' ');
+};
+
+const renderHomePage = (site) => {
+  const structured = buildHomeStructuredData(site);
+  const extras = structured.map(renderJsonLd).join('\n');
+  return `<!doctype html>
 <html lang="${escapeAttr(site.meta.lang)}">
-<head>${renderHead(site, { pageTitle: site.meta.title, description: site.meta.description })}</head>
+<head>${renderHead(site, {
+    pageTitle: site.meta.title,
+    description: site.meta.description,
+    pageUrl: site.meta.url,
+    extras,
+  })}</head>
 <body>
 ${renderNav(site)}
 <main>
@@ -282,19 +355,22 @@ ${renderTeam(site.team)}
 ${renderTrackRecord(site.track_record)}
 ${renderInsights(site.insights)}
 ${renderContact(site.contact)}
+<div hidden aria-hidden="true" data-llm-context>${escapeHtml(buildLlmContext(site))}</div>
 </main>
 ${renderFooter(site.footer)}
 <script src="/scripts/main.js" defer></script>
 </body>
 </html>
 `;
+};
 
 const renderLegalPage = (site, page) => {
   const pageTitle = `${page.title} | ${site.meta.site_name}`;
   const description = `${page.title} — ${site.meta.site_name}.`;
+  const pageUrl = `${site.meta.url.replace(/\/$/, '')}/${page.slug}.html`;
   return `<!doctype html>
 <html lang="${escapeAttr(site.meta.lang)}">
-<head>${renderHead(site, { pageTitle, description })}</head>
+<head>${renderHead(site, { pageTitle, description, pageUrl })}</head>
 <body>
 ${renderNav(site)}
 <!-- TODO: weryfikacja prawna -->
@@ -345,6 +421,44 @@ const writeFile = (relPath, html) => {
   fs.writeFileSync(target, html);
 };
 
+const renderLlmsTxt = (site) => {
+  const specializations = site.services.items.map((item) => item.title).join(', ');
+  const team = site.team.members.map((member) => member.name).join(', ');
+  return [
+    `Nazwa: ${site.meta.site_name} — Kancelaria Prawna`,
+    `URL: ${site.meta.url}`,
+    `Opis: ${site.meta.description}`,
+    `Specjalizacje: ${specializations}`,
+    `Zespół: ${team}`,
+    'Kontakt: formularz na stronie, email piotr.zielinski@adwokatura.home.pl',
+    'Lokalizacja: Zakopane, Polska',
+    '',
+  ].join('\n');
+};
+
+const renderSitemap = (site, lastmod) => {
+  const baseUrl = site.meta.url.replace(/\/$/, '');
+  const urls = [
+    `${baseUrl}/`,
+    `${baseUrl}/${site.legal_pages.privacy.slug}.html`,
+    `${baseUrl}/${site.legal_pages.disclaimer.slug}.html`,
+  ];
+  const entries = urls.map((loc) => `  <url>
+    <loc>${escapeHtml(loc)}</loc>
+    <lastmod>${lastmod}</lastmod>
+  </url>`).join('\n');
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${entries}
+</urlset>
+`;
+};
+
+const renderRobotsTxt = (site) => `User-agent: *
+Allow: /
+Sitemap: ${site.meta.url.replace(/\/$/, '')}/sitemap.xml
+`;
+
 const build = () => {
   const site = loadSite();
   cleanDist();
@@ -352,6 +466,10 @@ const build = () => {
   writeFile('index.html', renderHomePage(site));
   writeFile(`${site.legal_pages.privacy.slug}.html`, renderLegalPage(site, site.legal_pages.privacy));
   writeFile(`${site.legal_pages.disclaimer.slug}.html`, renderLegalPage(site, site.legal_pages.disclaimer));
+  const lastmod = new Date().toISOString().slice(0, 10);
+  writeFile('llms.txt', renderLlmsTxt(site));
+  writeFile('sitemap.xml', renderSitemap(site, lastmod));
+  writeFile('robots.txt', renderRobotsTxt(site));
   process.stdout.write(`Build OK → ${path.relative(ROOT, DIST)}/\n`);
 };
 
