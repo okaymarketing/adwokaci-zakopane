@@ -13,6 +13,7 @@ interface ContactPayload {
 
 const ALLOWED_ORIGINS = new Set<string>([
   'https://adwokaci.zakopane.pl',
+  'https://adwokaci-zakopane.pages.dev',
   'http://localhost:3000',
 ]);
 
