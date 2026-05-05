@@ -1,0 +1,13 @@
+name = "adwokaci-contact"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+
+# Production route — formularz dostępny pod adwokaci.zakopane.pl/api/*
+[[routes]]
+pattern = "adwokaci.zakopane.pl/api/*"
+zone_name = "zakopane.pl"
+
+# Sekret RESEND_API_KEY musi być dodany ręcznie:
+#   npx wrangler secret put RESEND_API_KEY
+# Bindingi:
+#   - RESEND_API_KEY (secret)

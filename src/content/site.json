@@ -174,7 +174,10 @@
     ],
     "consent": "Potwierdzam świadomość, że przesłanie zapytania nie kreuje stosunku klient-adwokat. Wyrażam zgodę na poufne przetwarzanie moich danych w celu nawiązania kontaktu.",
     "submit_label": "Prześlij Wiadomość",
-    "endpoint": "/api/contact"
+    "endpoint": "/api/contact",
+    "message_label": "Wiadomość",
+    "message_placeholder": "Opisz krótko sprawę, w której chcesz się skontaktować",
+    "website": ""
   },
   "footer": {
     "brand": "Adwokaci Zakopane",
