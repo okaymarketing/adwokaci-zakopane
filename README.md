@@ -21,6 +21,23 @@ npm run build        # Generuje dist/
 npx serve dist/      # Preview http://localhost:3000
 ```
 
+## Deploy — secrets
+
+Formularz kontaktowy działa jako **Cloudflare Pages Function** (`functions/api/contact.ts`),
+nie jako standalone Worker. Z tego powodu sekrety konfigurujemy w UI CF Pages,
+a nie przez `wrangler secret put`.
+
+**CF Pages → Settings → Environment variables → Production:**
+
+| Nazwa            | Typ        | Wartość                       |
+|------------------|-----------|-------------------------------|
+| `RESEND_API_KEY` | Encrypted | `re_…` (klucz Resend)         |
+
+Po zmianie zmiennych wykonaj redeploy (Pages buduje przy każdym pushu, ale env-y wymagają
+nowego deploya, by trafić do runtime'u).
+
+> Katalog `workers/contact-form/` zostaje jako archiwum — nie jest deployowany.
+
 ## Dokumentacja
 
 - [CLAUDE.md](./CLAUDE.md) — zasady projektu dla AI agentów
